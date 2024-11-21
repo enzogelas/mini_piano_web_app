@@ -47,11 +47,6 @@ function playSound(key) {
     audio.play();
 }
 
-let titleElement = document.getElementById("main_title");
-titleElement.textContent = "Play what you want !";
-
-let svgObject = document.getElementById('piano');
-
 document.addEventListener('keypress', function(event) {
     const key = event.key;
     // highlight pressed key
@@ -72,10 +67,10 @@ document.addEventListener('keyup', function(event) {
 });
 
 let bodyElement = document.getElementsByTagName("body")[0];
-    
-console.log(Object.keys(keyToAudio));
-for (key in Object.keys(keyToAudio)){
+
+for (key of Object.keys(keyToAudio)){
     let newAudio = document.createElement("audio");
+    console.log(key);
     newAudio.id = key;
     newAudio.src = keyToAudio[key];
     newAudio.preload = "auto";
@@ -83,3 +78,5 @@ for (key in Object.keys(keyToAudio)){
     bodyElement.appendChild(newAudio);
 }
 
+let titleElement = document.getElementById("main_title");
+titleElement.textContent = "Play what you want !";
